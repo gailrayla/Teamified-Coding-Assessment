@@ -1,11 +1,12 @@
 // Font imports
-import '@fontsource/source-sans-pro';
-import '@fontsource/source-sans-pro/600.css';
-import '@fontsource/source-sans-pro/700.css';
+import "@fontsource/source-sans-pro";
+import "@fontsource/source-sans-pro/600.css";
+import "@fontsource/source-sans-pro/700.css";
 
-import ContentWidthContainer from './components/layout/ContentWidthContainer';
+import ContentWidthContainer from "@/components/layout/ContentWidthContainer";
 
-import './App.css';
+import "./App.css";
+import { TransactionList } from "@/components/layout/ContentWidthContainer/transaction-list/transaction-list";
 
 /*
   To reference icons:
@@ -27,7 +28,7 @@ const App = () => {
           <p>Toolbar</p>
         </section>
         <section>
-          <p>Transaction List</p>
+          <TransactionList />
         </section>
       </main>
     </ContentWidthContainer>
