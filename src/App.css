@@ -1,0 +1,57 @@
+/* 
+// ===============================================
+//
+// Shared resets
+//
+// ===============================================
+
+// A. More sensible default box sizing.
+//    Resource: css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+
+// 1. This sets 1rem = 10px.
+//    Resource: http://snook.ca/archives/html_and_css/font-size-with-rem */
+
+/* stylelint-disable selector-no-vendor-prefix */
+html {
+    min-height: 100vh;
+    height: auto;
+    overflow: auto;
+    box-sizing: border-box; /* [A] */
+    text-size-adjust: 100%;
+    font-size: 62.5%; /* [1] */
+}
+
+body {
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    min-height: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit; /* [A] */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.content h1 {
+  font-size: 3.6rem;
+  font-weight: 700;
+}
+
+.content p {
+  margin: 0;
+  font-size: 1.6rem;
+}
