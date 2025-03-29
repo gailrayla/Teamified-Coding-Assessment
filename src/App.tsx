@@ -6,7 +6,7 @@ import "@fontsource/source-sans-pro/700.css";
 import ContentWidthContainer from "@/components/layout/ContentWidthContainer";
 
 import "./App.css";
-import { TransactionList } from "@/components/layout/ContentWidthContainer/transaction-list/transaction-list";
+import { TransactionList } from "@/components/transaction-list/transaction-list";
 
 /*
   To reference icons:
