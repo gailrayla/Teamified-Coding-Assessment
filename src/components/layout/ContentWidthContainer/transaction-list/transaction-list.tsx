@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Transaction from "@/types/transaction";
 import { TransactionItem } from "./transaction-item";
+import { formatDate } from "@/utils/format";
 
 export const TransactionList = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -9,7 +10,7 @@ export const TransactionList = () => {
     fetch("http://localhost:3004/transactions")
       .then((res) => res.json())
       .then((data) => {
-        // sort transactions by date in descending order
+        // Sort transactions by date in descending order
         const sortedTransactions = data.sort(
           (a: Transaction, b: Transaction) =>
             new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -19,7 +20,7 @@ export const TransactionList = () => {
       .catch((error) => console.error("Error fetching transactions:", error));
   }, []);
 
-  // group transactions by date
+  // Group transactions by date
   const groupedTransactions = transactions.reduce<
     Record<string, Transaction[]>
   >((acc, transaction) => {
@@ -31,9 +32,17 @@ export const TransactionList = () => {
   return (
     <div>
       {Object.entries(groupedTransactions).map(([date, transactions]) => (
-        <div key={date}>
-          <h2 style={{ fontSize: "16px", fontWeight: "normal" }}>{date}</h2>
-          <ul>
+        <div key={date} style={{ marginBottom: "20px" }}>
+          <h2
+            style={{
+              fontSize: "16px",
+              margin: "16px 0 8px",
+              fontWeight: "normal",
+            }}
+          >
+            {formatDate(date)}
+          </h2>
+          <ul style={{ padding: "0", listStyle: "none" }}>
             {transactions.map((transaction) => (
               <TransactionItem key={transaction.id} transaction={transaction} />
             ))}
