@@ -10,7 +10,6 @@ export const TransactionList = () => {
     fetch("http://localhost:3004/transactions")
       .then((res) => res.json())
       .then((data) => {
-        // Sort transactions by date in descending order
         const sortedTransactions = data.sort(
           (a: Transaction, b: Transaction) =>
             new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -20,7 +19,6 @@ export const TransactionList = () => {
       .catch((error) => console.error("Error fetching transactions:", error));
   }, []);
 
-  // Group transactions by date
   const groupedTransactions = transactions.reduce<
     Record<string, Transaction[]>
   >((acc, transaction) => {
@@ -30,19 +28,11 @@ export const TransactionList = () => {
   }, {});
 
   return (
-    <div>
+    <div className="c-container-content-width transaction-list">
       {Object.entries(groupedTransactions).map(([date, transactions]) => (
-        <div key={date} style={{ marginBottom: "20px" }}>
-          <h2
-            style={{
-              fontSize: "16px",
-              margin: "16px 0 8px",
-              fontWeight: "normal",
-            }}
-          >
-            {formatDate(date)}
-          </h2>
-          <ul style={{ padding: "0", listStyle: "none" }}>
+        <div key={date} className="transaction-group">
+          <h2 className="transaction-date">{formatDate(date)}</h2>
+          <ul className="transaction-items">
             {transactions.map((transaction) => (
               <TransactionItem key={transaction.id} transaction={transaction} />
             ))}

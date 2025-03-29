@@ -10,42 +10,16 @@ export const TransactionItem = ({ transaction }: TransactionItemProps) => {
     .join(" | ");
 
   return (
-    <li
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "10px",
-        padding: "10px",
-        borderBottom: "1px solid #ccc",
-      }}
-    >
-      <img
-        src={transaction.logoUrl}
-        alt={transaction.transactionTitle}
-        width={40}
-        height={40}
-        style={{ borderRadius: "5%" }}
-      />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          height: "40px",
-          lineHeight: "1",
-        }}
-      >
-        <strong style={{ fontSize: "16px", fontWeight: "600" }}>
+    <li className="transaction-item">
+      <img src={transaction.logoUrl} alt={transaction.transactionTitle} />
+      <div className="transaction-details">
+        <strong className="transaction-title">
           {transaction.transactionTitle}
         </strong>
-        <p style={{ fontSize: "14px", color: "gray", margin: 0 }}>{subtitle}</p>
+        <p className="transaction-subtitle">{subtitle}</p>
       </div>
-      <span
-        style={{ marginLeft: "auto", fontWeight: "bold", fontSize: "16px" }}
-      >
-        <span
-          style={{ color: transaction.cashflow === "inflow" ? "green" : "red" }}
-        >
+      <span className="transaction-amount">
+        <span className={transaction.cashflow === "inflow" ? "inflow" : ""}>
           {transaction.cashflow === "inflow" ? "+" : "-"}
         </span>
         ${transaction.amount}

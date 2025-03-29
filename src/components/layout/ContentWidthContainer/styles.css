@@ -1,6 +1,83 @@
 .c-container-content-width {
-    width: 100%;
-    max-width: calc(92rem + 3.2rem);
-    margin: 0 auto;
-    padding: 0 1.6rem;
+  width: 100%;
+  max-width: 92rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+}
+
+/* Transaction Item */
+.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: 1.6vw;
+  padding: 1.6vw;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+}
+
+.transaction-item img {
+  border-radius: 4px;
+  width: 48px;
+  height: 48px;
+}
+
+/* Transaction Details */
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  line-height: 1.2;
+}
+
+.transaction-title {
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+  font-weight: 600;
+}
+
+.transaction-subtitle {
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  color: gray;
+  margin: 0;
+}
+
+.transaction-amount {
+  margin-left: auto;
+  font-weight: bold;
+  font-size: clamp(1.4rem, 1.8vw, 1.6rem);
+}
+
+.transaction-amount span {
+  color: red;
+}
+
+.transaction-amount .inflow {
+  color: green;
+}
+
+/* Transaction List */
+.transaction-list {
+  padding-bottom: 4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.transaction-group {
+  margin-bottom: 2vw;
+}
+
+.transaction-date {
+  font-weight: normal;
+  margin: 1.6vw 0 0.8vw;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+}
+
+.transaction-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  list-style: none;
 }
