@@ -5,6 +5,10 @@ type TransactionItemProps = {
 };
 
 export const TransactionItem = ({ transaction }: TransactionItemProps) => {
+  const subtitle = [transaction.suburb, transaction.shortCategory]
+    .filter(Boolean)
+    .join(" | ");
+
   return (
     <li
       style={{
@@ -34,9 +38,7 @@ export const TransactionItem = ({ transaction }: TransactionItemProps) => {
         <strong style={{ fontSize: "16px", fontWeight: "600" }}>
           {transaction.transactionTitle}
         </strong>
-        <p style={{ fontSize: "14px", color: "gray", margin: 0 }}>
-          {transaction.suburb || transaction.shortCategory}
-        </p>
+        <p style={{ fontSize: "14px", color: "gray", margin: 0 }}>{subtitle}</p>
       </div>
       <span
         style={{ marginLeft: "auto", fontWeight: "bold", fontSize: "16px" }}
