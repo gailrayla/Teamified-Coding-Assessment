@@ -7,6 +7,9 @@ import ContentWidthContainer from "@/components/layout/ContentWidthContainer";
 
 import "./App.css";
 import { TransactionList } from "@/components/transaction-list/transaction-list";
+import { Toolbar } from "./components/toolbar/Toolbar";
+import { useState } from "react";
+import { FilterType } from "./types/filters";
 
 /*
   To reference icons:
@@ -20,15 +23,17 @@ import { TransactionList } from "@/components/transaction-list/transaction-list"
 */
 
 const App = () => {
+  const [filter, setFilter] = useState<FilterType>("all");
+
   return (
     <ContentWidthContainer>
       <main className="content">
         <h1>Thriday Code Challenge</h1>
         <section>
-          <p>Toolbar</p>
+          <Toolbar onFilterChange={setFilter} />
         </section>
         <section>
-          <TransactionList />
+          <TransactionList filter={filter} />
         </section>
       </main>
     </ContentWidthContainer>

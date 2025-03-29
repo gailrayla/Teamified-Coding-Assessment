@@ -1,48 +1,39 @@
+import { FilterType } from "@/types/filters";
 import { useState } from "react";
-import checkIcon from "@/assets/check-circle-fill.svg";
-import receiptIcon from "@/assets/receipt.svg";
-import plusIcon from "@/assets/plus.svg";
-import minusIcon from "@/assets/minus.svg";
+import { ToolbarButton } from "./toolbar-button";
 
-type FilterType = "all" | "inflow" | "outflow";
-
-interface ToolbarProps {
-  setFilter: (filter: FilterType) => void;
-}
-
-export const Toolbar = ({ setFilter }: ToolbarProps) => {
+export const Toolbar = ({
+  onFilterChange,
+}: {
+  onFilterChange: (filter: FilterType) => void;
+}) => {
   const [selectedFilter, setSelectedFilter] = useState<FilterType>("all");
 
-  const handleFilterChange = (filter: FilterType) => {
+  const handleFilterClick = (filter: FilterType) => {
     setSelectedFilter(filter);
-    setFilter(filter);
+    onFilterChange(filter);
   };
 
   return (
     <div className="toolbar">
-      <button
-        className={`filter-btn ${selectedFilter === "all" ? "active" : ""}`}
-        onClick={() => handleFilterChange("all")}
-      >
-        {selectedFilter === "all" && <img src={checkIcon} alt="Selected" />}
-        All
-      </button>
-
-      <button
-        className={`filter-btn ${selectedFilter === "inflow" ? "active" : ""}`}
-        onClick={() => handleFilterChange("inflow")}
-      >
-        <img src={plusIcon} alt="Income" />
-        Income
-      </button>
-
-      <button
-        className={`filter-btn ${selectedFilter === "outflow" ? "active" : ""}`}
-        onClick={() => handleFilterChange("outflow")}
-      >
-        <img src={minusIcon} alt="Expense" />
-        Expense
-      </button>
+      <ToolbarButton
+        label="All"
+        filter="all"
+        selectedFilter={selectedFilter}
+        onClick={handleFilterClick}
+      />
+      <ToolbarButton
+        label="Income"
+        filter="inflow"
+        selectedFilter={selectedFilter}
+        onClick={handleFilterClick}
+      />
+      <ToolbarButton
+        label="Expense"
+        filter="outflow"
+        selectedFilter={selectedFilter}
+        onClick={handleFilterClick}
+      />
     </div>
   );
 };

@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 import Transaction from "@/types/transaction";
 import { TransactionItem } from "./transaction-item";
 import { formatDate } from "@/utils/format";
+import { FilterType } from "@/types/filters";
+import {
+  filterTransactions,
+  groupTransactionsByDate,
+} from "@/utils/transaction-utils";
 
-export const TransactionList = () => {
+type TransactionListProps = {
+  filter: FilterType;
+};
+
+export const TransactionList = ({ filter }: TransactionListProps) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
@@ -19,13 +28,9 @@ export const TransactionList = () => {
       .catch((error) => console.error("Error fetching transactions:", error));
   }, []);
 
-  const groupedTransactions = transactions.reduce<
-    Record<string, Transaction[]>
-  >((acc, transaction) => {
-    acc[transaction.date] = acc[transaction.date] || [];
-    acc[transaction.date].push(transaction);
-    return acc;
-  }, {});
+  // ✅ Use the utility functions
+  const filteredTransactions = filterTransactions(transactions, filter);
+  const groupedTransactions = groupTransactionsByDate(filteredTransactions);
 
   return (
     <div className="c-container-content-width transaction-list">
