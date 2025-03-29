@@ -28,7 +28,6 @@ export const TransactionList = ({ filter }: TransactionListProps) => {
       .catch((error) => console.error("Error fetching transactions:", error));
   }, []);
 
-  // ✅ Use the utility functions
   const filteredTransactions = filterTransactions(transactions, filter);
   const groupedTransactions = groupTransactionsByDate(filteredTransactions);
 
