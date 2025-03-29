@@ -5,4 +5,5 @@ export type ToolbarButtonProps = {
   filter: FilterType;
   selectedFilter: FilterType;
   onClick: (filter: FilterType) => void;
+  showCheckIcon?: boolean;
 };

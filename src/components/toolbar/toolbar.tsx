@@ -21,6 +21,7 @@ export const Toolbar = ({
         filter="all"
         selectedFilter={selectedFilter}
         onClick={handleFilterClick}
+        showCheckIcon
       />
       <ToolbarButton
         label="Income"
