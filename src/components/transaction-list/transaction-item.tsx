@@ -19,7 +19,9 @@ export const TransactionItem = ({ transaction }: TransactionItemProps) => {
         <p className="transaction-subtitle">{subtitle}</p>
       </div>
       <span className="transaction-amount">
-        <span className={transaction.cashflow === "inflow" ? "inflow" : ""}>
+        <span
+          className={transaction.cashflow === "inflow" ? "inflow" : "outflow"}
+        >
           {transaction.cashflow === "inflow" ? "+" : "-"}
         </span>
         ${transaction.amount}

@@ -8,12 +8,14 @@ export const ToolbarButton = ({
   onClick,
 }: ToolbarButtonProps) => {
   const isSelected = selectedFilter === filter;
-  const icon = getIcon(filter, isSelected) || undefined; // Prevent null issue
+  const icon = getIcon(filter, isSelected) || undefined;
 
   return (
     <button
       onClick={() => onClick(filter)}
-      className={`toolbar-button ${isSelected ? "selected" : ""}`}
+      className={`toolbar-button ${isSelected ? "selected" : ""} ${
+        filter === "all" && isSelected ? "all-selected" : ""
+      }`}
     >
       {filter === "all" && isSelected ? (
         <>
