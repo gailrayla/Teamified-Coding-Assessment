@@ -1,13 +1,4 @@
 import Transaction from "@/types/transaction";
-import { FilterType } from "@/types/filters";
-
-export const filterTransactions = (
-  transactions: Transaction[],
-  filter: FilterType
-): Transaction[] => {
-  if (filter === "all") return transactions;
-  return transactions.filter((transaction) => transaction.cashflow === filter);
-};
 
 export const groupTransactionsByDate = (
   transactions: Transaction[]

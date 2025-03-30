@@ -1,11 +1,11 @@
 export type Transaction = {
-  id: number;
+  thriveBankTransactionID: number;
   date: string;
   logoUrl: string;
   transactionTitle: string;
   suburb?: string;
   shortCategory?: string;
-  amount: number;
+  amount: string;
   cashflow: "inflow" | "outflow";
 };
 
