@@ -18,6 +18,11 @@ export const TransactionList = ({ filter }: TransactionListProps) => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
+        if (offset === 0) {
+          setTransactions([]);
+          setHasMore(true);
+        }
+
         let url = `http://localhost:3004/transactions?_start=${offset}&_limit=${limit}`;
 
         if (filter !== "all") {
@@ -31,37 +36,28 @@ export const TransactionList = ({ filter }: TransactionListProps) => {
 
         const data: Transaction[] = await response.json();
 
-        if (data.length < limit) {
-          setHasMore(false);
-        }
+        setHasMore(data.length === limit);
 
         const sortedTransactions = data.sort(
           (a: Transaction, b: Transaction) =>
             new Date(b.date).getTime() - new Date(a.date).getTime()
         );
 
-        // Filter out duplicates
-        setTransactions((prevTransactions) => {
-          const existingIds = new Set(
-            prevTransactions.map((tx) => tx.thriveBankTransactionID)
-          );
-          const uniqueTransactions = sortedTransactions.filter(
-            (tx) => !existingIds.has(tx.thriveBankTransactionID)
-          );
-          return [...prevTransactions, ...uniqueTransactions];
-        });
+        setTransactions((prevTransactions) =>
+          offset === 0
+            ? sortedTransactions
+            : [...prevTransactions, ...sortedTransactions]
+        );
       } catch (error) {
         console.error("Error fetching transactions:", error);
       }
     };
 
     fetchTransactions();
-  }, [filter, offset, limit]);
+  }, [filter, offset]);
 
   useEffect(() => {
     setOffset(0);
-    setTransactions([]);
-    setHasMore(true);
   }, [filter]);
 
   const handleLoadMore = () => {
