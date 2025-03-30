@@ -58,6 +58,12 @@ export const TransactionList = ({ filter }: TransactionListProps) => {
     fetchTransactions();
   }, [filter, offset, limit]);
 
+  useEffect(() => {
+    setOffset(0);
+    setTransactions([]);
+    setHasMore(true);
+  }, [filter]);
+
   const handleLoadMore = () => {
     setOffset((prevOffset) => prevOffset + limit);
   };
