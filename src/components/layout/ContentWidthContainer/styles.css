@@ -47,14 +47,14 @@
 }
 
 .transaction-title {
-  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  font-size: 16px !important;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .transaction-subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-size: 14px !important;
   color: gray;
   margin: 0;
 }
