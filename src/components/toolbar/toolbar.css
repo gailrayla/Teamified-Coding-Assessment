@@ -1,44 +1,42 @@
-/* Toolbar */
 .toolbar {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 75%;
+  gap: 1rem;
   justify-content: flex-end;
   margin-left: auto;
 }
 
 @media (max-width: 768px) {
   .toolbar {
-    width: 50%;
+    gap: 0.75rem;
   }
 }
 
-/* Toolbar Button */
 .toolbar-button {
-  width: 48px;
-  height: 48px;
-  padding: 14px;
-  border-radius: 8px;
+  width: 4.8rem;
+  height: 4.8rem;
+  padding: 1.4rem;
+  border-radius: 0.8rem;
   border: 1px solid #c5d0db;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0.6rem;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .toolbar-button img {
-  width: 24px;
-  height: 24px;
+  width: 2.4rem;
+  height: 2.4rem;
 }
 
 .toolbar-button.all-button {
-  width: 79px;
-  height: 48px;
+  width: 7.9rem;
+  height: 4.8rem;
   justify-content: center;
+  font-size: 1.6rem;
 }
 
 .toolbar-button.selected {
@@ -52,8 +50,8 @@
 }
 
 .check-icon {
-  width: 16px;
-  height: 16px;
+  width: 1.6rem;
+  height: 1.6rem;
   display: none;
 }
 
@@ -62,20 +60,15 @@
 }
 
 @media (max-width: 768px) {
-  .toolbar {
-    width: min(45%, 400px);
-    gap: 6px;
-  }
-
   .toolbar-button {
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    font-size: 14px;
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+    font-size: 0.875rem;
   }
 
   .toolbar-button img {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
   }
 }
