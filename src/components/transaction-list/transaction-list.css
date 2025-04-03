@@ -1,35 +1,32 @@
-/* Transaction List */
 .transaction-list {
-  padding-bottom: 4vw;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: min(75%, 920px);
+  gap: 1.6rem;
+  max-width: min(90vw, 92rem);
   margin: 0 auto;
+  padding-bottom: 4rem;
 }
 
-/* Transaction Item */
 .transaction-item {
   display: flex;
   align-items: center;
-  gap: 2vw;
-  padding: 2vw;
+  gap: 1.6rem;
+  padding: 1.6rem 2.4rem;
   background: #ffffff;
   border: 1px solid #eeeeee;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   width: 100%;
-  flex-wrap: nowrap;
+  max-width: 92rem;
+  height: 8rem;
 }
 
-/* Image */
 .transaction-item img {
-  border-radius: 4px;
-  width: clamp(32px, 6vw, 48px);
-  height: clamp(32px, 6vw, 48px);
+  border-radius: 0.4rem;
+  width: 4.8rem;
+  height: 4.8rem;
   flex-shrink: 0;
 }
 
-/* Transaction Details */
 .transaction-details {
   display: flex;
   flex-direction: column;
@@ -39,14 +36,15 @@
 }
 
 .transaction-title {
-  font-size: 16px !important;
+  font-size: 1.6rem;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .transaction-subtitle {
-  font-size: 14px !important;
+  font-size: 1.4rem;
   color: gray;
   margin: 0;
 }
@@ -54,7 +52,7 @@
 .transaction-amount {
   margin-left: auto;
   font-weight: bold;
-  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+  font-size: 1.6rem;
   color: black;
 }
 
@@ -73,28 +71,54 @@
 .transaction-date {
   font-weight: normal;
   margin: 1.6vw 0 0.8vw;
-  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+  font-size: 1.6rem;
 }
 
 .transaction-items {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.6rem;
   padding: 0;
   list-style: none;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .transaction-list {
-    width: min(50%, 480px);
+    max-width: min(100vw, 36rem);
+    padding: 0 1.6rem 3.2rem;
+    margin: 0 auto;
+  }
+
+  .transaction-item {
+    max-width: 32.8rem;
+    height: 6.4rem;
+    padding: 1.6rem;
+    gap: 1.2rem;
+    border-radius: 0.8rem;
+  }
+
+  .transaction-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .transaction-title {
     font-size: 1.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .transaction-details .transaction-subtitle {
+  .transaction-subtitle {
     font-size: 1.2rem;
+  }
+
+  .transaction-date {
+    font-size: 1.4rem;
+  }
+
+  .transaction-amount {
+    font-size: 1.4rem;
   }
 }
