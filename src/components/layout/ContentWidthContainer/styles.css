@@ -151,7 +151,7 @@
 }
 
 .toolbar-button.selected {
-  background: green;
+  background: #00d373;
   color: white;
 }
 
@@ -193,7 +193,7 @@
 
 .load-more button {
   padding: 12px 24px;
-  background-color: green;
+  background-color: #00d373;
   color: white;
   border: none;
   border-radius: 8px;

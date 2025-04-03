@@ -14,9 +14,11 @@ export const formatDate = (dateString: string): string => {
   }
 
   const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
+    weekday: "long",
+    day: "2-digit",
     month: "long",
-    day: "numeric",
+    year: "numeric",
   };
+
   return dateObj.toLocaleDateString(undefined, options);
 };
