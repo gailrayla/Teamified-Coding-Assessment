@@ -4,6 +4,7 @@ import { TransactionItem } from "./transaction-item";
 import { formatDate } from "@/utils/format";
 import { FilterType } from "@/types/filters";
 import { groupTransactionsByDate } from "@/utils/transaction-utils";
+import "./transaction-list.css";
 
 type TransactionListProps = {
   filter: FilterType;
@@ -11,22 +12,14 @@ type TransactionListProps = {
 
 export const TransactionList = ({ filter }: TransactionListProps) => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [offset, setOffset] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
-  const limit = 10;
 
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        if (offset === 0) {
-          setTransactions([]);
-          setHasMore(true);
-        }
-
-        let url = `http://localhost:3004/transactions?_start=${offset}&_limit=${limit}`;
+        let url = `http://localhost:3004/transactions`;
 
         if (filter !== "all") {
-          url += `&cashflow=${filter}`;
+          url += `?cashflow=${filter}`;
         }
 
         const response = await fetch(url);
@@ -36,33 +29,19 @@ export const TransactionList = ({ filter }: TransactionListProps) => {
 
         const data: Transaction[] = await response.json();
 
-        setHasMore(data.length === limit);
-
         const sortedTransactions = data.sort(
           (a: Transaction, b: Transaction) =>
             new Date(b.date).getTime() - new Date(a.date).getTime()
         );
 
-        setTransactions((prevTransactions) =>
-          offset === 0
-            ? sortedTransactions
-            : [...prevTransactions, ...sortedTransactions]
-        );
+        setTransactions(sortedTransactions);
       } catch (error) {
         console.error("Error fetching transactions:", error);
       }
     };
 
     fetchTransactions();
-  }, [filter, offset]);
-
-  useEffect(() => {
-    setOffset(0);
   }, [filter]);
-
-  const handleLoadMore = () => {
-    setOffset((prevOffset) => prevOffset + limit);
-  };
 
   const groupedTransactions = groupTransactionsByDate(transactions);
 
@@ -81,11 +60,6 @@ export const TransactionList = ({ filter }: TransactionListProps) => {
           </ul>
         </div>
       ))}
-      {hasMore && (
-        <div className="load-more">
-          <button onClick={handleLoadMore}>Load More</button>
-        </div>
-      )}
     </div>
   );
 };
