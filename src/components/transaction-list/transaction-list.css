@@ -82,6 +82,12 @@
   list-style: none;
 }
 
+.no-transactions-message {
+  font-size: 1.6rem;
+  text-align: left;
+  color: #111111;
+}
+
 @media (max-width: 768px) {
   .transaction-list {
     max-width: min(100vw, 36rem);
@@ -119,6 +125,9 @@
   }
 
   .transaction-amount {
+    font-size: 1.4rem;
+  }
+  .no-transactions-message {
     font-size: 1.4rem;
   }
 }

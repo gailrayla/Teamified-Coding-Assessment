@@ -60,6 +60,9 @@ export const TransactionList = ({ filter }: TransactionListProps) => {
           </ul>
         </div>
       ))}
+      <div className="no-transactions-message">
+        There are no more transactions on this account.
+      </div>
     </div>
   );
 };
